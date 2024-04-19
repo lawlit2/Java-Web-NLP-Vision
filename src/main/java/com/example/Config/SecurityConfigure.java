@@ -31,11 +31,16 @@ public class SecurityConfigure {
             return http
                     .authorizeHttpRequests(conf->{
                         conf.requestMatchers("/static/**").permitAll();
+                        conf.requestMatchers("/register").permitAll();
+                        conf.requestMatchers("/forgot_password").permitAll();
+                        conf.requestMatchers("/SendMessage").permitAll();
+                        conf.requestMatchers("/register1").permitAll();
+                        conf.requestMatchers("/send_code").permitAll();
                         conf.anyRequest().authenticated();
                     })
                     .formLogin(conf->{
                         conf.loginPage("/login");
-                        conf.loginProcessingUrl("/dologin");
+                        conf.loginProcessingUrl("/doLogin");
                         conf.defaultSuccessUrl("/index");
                         conf.usernameParameter("username");
                         conf.passwordParameter("password");
