@@ -1,13 +1,16 @@
 package com.example.Server.ServerImpl;
 
-import com.example.Server.InsertAccountServer;
+import com.example.Server.AccountServer;
 import com.example.entity.Account;
 import com.example.mapper.UserMapper;
 import jakarta.annotation.Resource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InsertAccountServerImpl implements InsertAccountServer {
+public class AccountServerImpl implements AccountServer {
+    @Resource
+    BCryptPasswordEncoder encoder;
     @Resource
     UserMapper mapper;
     @Override
@@ -28,4 +31,12 @@ public class InsertAccountServerImpl implements InsertAccountServer {
             return true;
         }
     }
+
+
+
+    @Override
+    public boolean UpdatePassword(String email, String newPassword) {
+       return mapper.UpdataAccountPassword(newPassword,email);
+    }
+
 }

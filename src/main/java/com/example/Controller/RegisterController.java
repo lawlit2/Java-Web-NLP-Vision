@@ -1,6 +1,6 @@
 package com.example.Controller;
 
-import com.example.Server.InsertAccountServer;
+import com.example.Server.AccountServer;
 import com.example.Util.MessageSender;
 import jakarta.annotation.Resource;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -18,7 +18,7 @@ public class RegisterController {
     @Resource
     MessageSender messageSender;
     @Resource
-    InsertAccountServer insertAccountServer;
+    AccountServer insertAccountServer;
     @Resource
     BCryptPasswordEncoder bCryptPasswordEncoder;
     @GetMapping("/register")

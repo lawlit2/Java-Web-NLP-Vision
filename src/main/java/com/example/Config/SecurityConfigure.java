@@ -36,6 +36,7 @@ public class SecurityConfigure {
                         conf.requestMatchers("/SendMessage").permitAll();
                         conf.requestMatchers("/register1").permitAll();
                         conf.requestMatchers("/send_code").permitAll();
+                        conf.requestMatchers("/find_password").permitAll();
                         conf.anyRequest().authenticated();
                     })
                     .formLogin(conf->{
