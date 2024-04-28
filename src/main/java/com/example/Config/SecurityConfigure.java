@@ -42,7 +42,7 @@ public class SecurityConfigure {
                     .formLogin(conf->{
                         conf.loginPage("/login");
                         conf.loginProcessingUrl("/doLogin");
-                        conf.defaultSuccessUrl("/index");
+                        conf.defaultSuccessUrl("/IdRead");
                         conf.usernameParameter("username");
                         conf.passwordParameter("password");
                         conf.permitAll();

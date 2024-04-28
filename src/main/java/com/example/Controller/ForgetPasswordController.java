@@ -4,6 +4,7 @@ import com.example.Server.AccountServer;
 import com.example.Util.MessageSender;
 import jakarta.annotation.Resource;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ForgetPasswordController {
+    @Resource
+    BCryptPasswordEncoder encoder;
     @Resource
     RedisTemplate<Object,Object> redisTemplate;
     @Resource
@@ -42,6 +45,7 @@ public class ForgetPasswordController {
         if (VCode == null) return "请重新发送验证码";
         if (!VCode.equals(VerificationCode)) return "验证码不正确";
         if (oldPassword.equals(newPassword)) {
+            newPassword = encoder.encode(newPassword);
             server.UpdatePassword(email, newPassword);
             return "密码修改成功";
         } else {

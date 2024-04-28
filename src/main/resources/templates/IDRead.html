@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>SplashDash</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/icofont.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/Upload.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+	<link rel="stylesheet" id="theme-change" type="text/css" href="">
+</head>
+
+
+<body>
+<div class="loader">
+	  <div class="spinner">
+		<img src="static/picture/loader.gif" alt="">
+	  </div> 
+	</div>
+<!-- Sidebar Start -->
+<aside class="sidebar-wrapper">
+    <div class="side-menu-wrap">
+        <ul class="main-menu">
+            <li>
+                <a href=" " class="active">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid nav-icon"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                            </span>
+                    <span class="menu-text">
+                                身份证识别
+                            </span>
+                </a>
+            </li>
+            <li>
+                <a href="orders.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                            </span>
+                    <span class="menu-text">
+                                文档去手写
+                            </span>
+                </a>
+            </li>
+            <li>
+                <a href="customers.html">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            </span>
+                    <span class="menu-text">
+                                驾驶证识别
+                            </span>
+                </a>
+            </li>
+            <li >
+                <a href="#">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-voicemail"><circle cx="5.5" cy="11.5" r="4.5"></circle><circle cx="18.5" cy="11.5" r="4.5"></circle><line x1="5.5" y1="16" x2="18.5" y2="16"></line></svg>
+                            </span>
+                    <span class="menu-text">
+                                Support
+                            </span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</aside>
+    <!-- Main Body -->
+    <div class="page-wrapper">
+        <div th:include="header.html::head-title"></div>
+        <!-- Container Start -->
+        <div class="page-wrapper">
+            <div class="main-content">
+                <!-- Page Title Start -->
+                <div class="row">
+                    <div class="colxl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-box">
+                                <h4 class="page-title">支持jpg/jpeg/png/bmp格式</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Table Start -->
+                <div class="row">
+                    <div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+                                <div class="ad-invoice-title">
+                                    <h4>要识别的内容</h4>
+                                </div>
+                                <hr>
+                                <div class="wrapper">
+                                    <header>File Uploader JavaScript</header>
+                                    <form action="#">
+                                        <input id="fileInput" class="file-input" type="file" name="file" hidden>
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Browse File to Upload</p>
+                                    </form>
+                                    <section class="progress-area"></section>
+                                    <section class="uploaded-area"></section>
+                                </div>
+                                <span id="mess"></span>
+                                <hr>
+								<div class="ad-invoice-title">
+									<h4>识别结果</h4>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-sm-6">
+                                        <p>姓名:<span></span></p>
+										<p>性别:<span></span></p>
+                                        <p>民族:<span></span></p>
+                                        <p>出生:<span></span></p>
+                                        <p>住址:<span></span></p>
+                                        <p>公民身份证号:<span></span></p>
+									</div>
+                                    <div class="col-sm-6">
+                                        <p>签发机关:<span></span></p>
+                                        <p>签发日期:<span></span></p>
+                                        <p>失效日期:<span></span></p>
+                                    </div>
+								</div>
+                                <hr>
+                                <div id="example_wrapper" class="dataTables_wrapper no-footer">
+                                   <div id="example_filter" class="dataTables_filter">
+
+                                </div>
+                                    <table id="example" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed" style="width: 100%;" role="grid" aria-describedby="example_info">
+                                        <div class="ad-invoice-title">
+                                            <h4>历史识别记录</h4>
+                                        </div>
+
+                                    <tbody>
+                                    <tr class="odd">
+                                        <td class="dtr-control sorting_1" tabindex="0">姓名</td>
+                                        <td>性别</td>
+                                        <td>民族</td>
+                                        <td>出生</td>
+                                        <td>住址</td>
+                                        <td>身份证号</td>
+                                        <td>签发机关</td>
+                                        <td>签发日期</td>
+                                    </tr>
+                                    <tr class="odd" th:each="message:${ListMessage}">
+                                        <td class="dtr-control sorting_1" tabindex="0" th:text="${message.getName()}">Airi</td>
+                                        <td th:text="${message.getSex()}" >Satou</td>
+                                        <td th:text="${message.getEthnic()}">Tokyo</td>
+                                        <td th:text="${message.getBirth()}">33</td>
+                                        <td th:text="${message.getLocation()}">2008/11/28</td>
+                                        <td th:text="${message.getIDNumber()}">$162,700</td>
+                                        <td th:text="${message.getIssuAuthor()}">5407</td>
+                                        <td th:text="${message.getDateOfIssue()}">a.satou@datatables.net</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+							</div>
+						</div>
+					</div>
+                </div>
+			</div>    
+		</div>    
+	</div>
+    <!-- Script Start -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/custom.js"></script>
+    <script src = "static/js/Upload.js"></script>
+</body>
+</html>
+<script>
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+
+        fetch('upload', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // 处理服务器响应
+                console.log(data);
+            })
+            .catch(error => {
+                // 处理错误
+                console.error('There was a problem with your fetch operation:', error);
+            });
+    });
+</script>
