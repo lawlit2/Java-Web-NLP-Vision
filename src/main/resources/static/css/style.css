@@ -5855,11 +5855,11 @@ body .note-toolbar.card-header button.note-btn:after {
   font-size: 12px;
   margin: 8px 0 0;
 }
-.received-withd-msg { width: 57%;}
+.received-withd-msg { width: 100%;}
 .mesgs {
   float: left;
-  padding: 20px 0;
-  width: 65%;
+  padding: 50px 0;
+  width: 80%;
 }
 .chat-list.chat-list22 {
     padding: 0 20px 20px;

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+/* global axios */
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+  <title>SplashDash</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <meta name="MobileOptimized" content="320">
+  <!--Start Style -->
+  <link rel="stylesheet" type="text/css" href="static/css/fonts.css">
+  <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="static/css/icofont.min.css">
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/Upload.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link rel="stylesheet" id="theme-change" type="text/css" href="">
+</head>
+
+
+<body>
+<div class="loader">
+  <div class="spinner">
+    <img src="static/picture/loader.gif" alt="">
+  </div>
+</div>
+<!-- Sidebar Start -->
+<aside class="sidebar-wrapper">
+  <div class="side-menu-wrap">
+    <ul class="main-menu">
+      <li>
+        <a href="IdRead" >
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid nav-icon"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                            </span>
+          <span class="menu-text">
+                                身份证识别
+                            </span>
+        </a>
+      </li>
+      <li>
+        <a href="AnimalRead">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                            </span>
+          <span class="menu-text">
+                                图像识别
+                            </span>
+        </a>
+      </li>
+      <li>
+        <a href="DriverLicenses">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            </span>
+          <span class="menu-text">
+                                驾驶证识别
+                            </span>
+        </a>
+      </li>
+      <li >
+        <a href="NLPPage", class="active">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-voicemail"><circle cx="5.5" cy="11.5" r="4.5"></circle><circle cx="18.5" cy="11.5" r="4.5"></circle><line x1="5.5" y1="16" x2="18.5" y2="16"></line></svg>
+                            </span>
+          <span class="menu-text">
+                                nlp纠错
+                            </span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</aside>
+<!-- Main Body -->
+<div class="page-wrapper">
+  <div th:include="header.html::head-title"></div>
+  <!-- Container Start -->
+  <div class="page-wrapper">
+    <div class="main-content">
+      <!-- Page Title Start -->
+      <div class="row">
+        <div class="colxl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="page-title-wrapper">
+            <div class="page-title-box">
+              <h4 class="page-title">NLP纠错</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Table Start -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card card-body">
+            <div class="inbox-msg">
+              <div class="mesgs">
+                <div class="chat-list chat-list22">
+                  <div class="chat-people">
+
+                    <div class="chat-ib">
+                      <h5>AI文本机器人</h5>
+                      <p>Welcome！！！</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="msg-history" >
+                  <div class="incoming-msg">
+                    <div class="received-msg">
+                      <div class="received-withd-msg">
+                        <p>请在下面输入框内输入想要文本纠错的文字</p>
+                        <span class="time-date"> </span></div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="type-msg">
+                  <div class="input-msg-write">
+                    <input id="content" type="text" class="write-msg" placeholder="Type a message">
+                    <button id="messageButton" class="msg-send-btn" type="button">Send <i class="fab fa-telegram-plane"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Script Start -->
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  function fetchMessages() {
+    // 使用Axios获取聊天记录并渲染到chatBox中
+  }
+
+  function sendMessage() {
+    // 获取表单数据
+    var content = document.getElementById('content').value;
+
+    // 检查是否为空
+    if ( content.trim() === '') {
+      alert('Please fill both sender and message fields.');
+      return;
+    }
+
+    // 构建消息对象
+    var message = {
+      content: content,
+      time: new Date().toLocaleTimeString()
+    };
+
+    // 发送消息到服务器
+    fetch('/Nlp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message)
+    })
+            .then(response => {
+              if (!response.ok) {
+                console.log(message);
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {renderMessage(data[1].message, data[1].date, data[1].type);
+              // 处理服务器响应，渲染新消息
+              renderMessage(data[0].message, data[0].date, data[0].type);
+
+            })
+            .catch(error => {
+              console.error('Error sending message:', error);
+            });
+
+    // 清空输入框
+    document.getElementById('content').value = '';
+  }
+
+  // 监听表单提交事件
+  document.getElementById('messageButton').addEventListener('click', function (event) {
+    event.preventDefault();
+    sendMessage();
+  });
+
+  // 渲染消息到chatBox中
+  function renderMessage(message,time,type) {
+    var msgHistory = document.querySelector('.msg-history');
+    var msgDiv = document.createElement('div');
+    msgDiv.className = (type === 'incoming') ? 'incoming-msg' : 'outgoing-msg';
+
+    var msgContentDiv = document.createElement('div');
+    msgContentDiv.className = (type === 'incoming') ? 'received-msg' : 'sent-msg';
+
+    var msgContentDiv2 = document.createElement('div');
+    if(type==='incoming'){
+      msgContentDiv2.className = 'received-withd-msg';
+    }
+
+    var msgText = document.createElement('p');
+    msgText.textContent = message;
+
+    var msgTime = document.createElement('span');
+    msgTime.className = 'time-date';
+    msgTime.textContent = time;
+
+    msgContentDiv2.appendChild(msgText);
+    msgContentDiv2.appendChild(msgTime);
+    msgContentDiv.appendChild(msgContentDiv2);
+    msgDiv.appendChild(msgContentDiv);
+
+    msgHistory.appendChild(msgDiv);
+  }
+
+  // 页面加载时获取聊天记录
+  fetchMessages();
+  /*]]>*/
+</script>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/custom.js"></script>
+<script src = "static/js/Upload.js"></script>
+</body>
+</html>

@@ -43,7 +43,7 @@ public class IDReadController {
                 .getAuthentication()
                 .getPrincipal();
         String fileName = file.getOriginalFilename();
-        String filePath = "C:\\Users\\ATRI\\IdeaProjects\\AIspringSSM\\src\\main\\resources\\uploadFile\\";
+        String filePath = "C:\\Users\\ATRI\\IdeaProjects\\AIspringSSM\\src\\main\\resources\\static\\uploadFile";
         File dir = new File(filePath+fileName);
        try{
           IdMessage message;

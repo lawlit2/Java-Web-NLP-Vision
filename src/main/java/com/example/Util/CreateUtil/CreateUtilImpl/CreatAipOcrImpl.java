@@ -1,10 +1,8 @@
-package com.example.Util.Impl;
+package com.example.Util.CreateUtil.CreateUtilImpl;
 
 import com.baidu.aip.ocr.AipOcr;
-import com.example.Util.CreatAipOcr;
-import org.springframework.context.annotation.Bean;
+import com.example.Util.CreateUtil.CreatAipOcr;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 public class CreatAipOcrImpl implements CreatAipOcr {

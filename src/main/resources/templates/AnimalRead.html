@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="static/css/Upload.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 	<link rel="stylesheet" id="theme-change" type="text/css" href="">
+    <link rel="stylesheet" href="static/css/result.css">
+
 </head>
 
 
@@ -38,7 +40,7 @@
     <div class="side-menu-wrap">
         <ul class="main-menu">
             <li>
-                <a href=" " class="active">
+                <a href="IdRead">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid nav-icon"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                             </span>
@@ -48,12 +50,12 @@
                 </a>
             </li>
             <li>
-                <a href="AnimalRead">
+                <a href="" class="active">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
                             </span>
                     <span class="menu-text">
-                                图像识别
+                                动物识别
                             </span>
                 </a>
             </li>
@@ -118,50 +120,31 @@
                                 </div>
                                 <span style="color: #ff001c" id="mess"></span>
                                 <hr>
-								<div class="ad-invoice-title">
-									<h4>识别结果</h4>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-6">
-                                        <p>姓名:<span id="name" ></span></p>
-										<p>性别:<span id="sex" ></span></p>
-                                        <p>民族:<span id="ethnic" ></span></p>
-                                        <p>出生:<span id="born" ></span></p>
-                                        <p>住址:<span id="location" ></span></p>
-                                        <p>公民身份证号:<span id="idNumber"></span></p>
-									</div>
-
-								</div>
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                        <!-- Vertical Bar Chart Card-->
+                                        <div class="card chart-card">
+                                            <div class="card-header">
+                                                <h4>识别概率图</h4>
+                                            </div>
+                                            <div id="pie-chart"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img id="img_path" alt="Example Image">
+                                    </div>
+                                </div>
                                 <hr>
+
                                 <div id="example_wrapper" class="dataTables_wrapper no-footer">
                                    <div id="example_filter" class="dataTables_filter">
 
                                 </div>
                                     <table id="example" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed" style="width: 100%;" role="grid" aria-describedby="example_info">
                                         <div class="ad-invoice-title">
-                                            <h4>历史识别记录</h4>
+                                            <h4>最大概率识别结果:<span style="color: #ff0019" id="imgname"></span></h4>
                                         </div>
 
-                                    <tbody>
-                                    <tr class="odd">
-                                        <td  class="dtr-control sorting_1" tabindex="0">姓名</td>
-                                        <td >性别</td>
-                                        <td >民族</td>
-                                        <td >出生</td>
-                                        <td >住址</td>
-                                        <td >身份证号</td>
-                                    </tr>
-                                    <tr class="odd" th:each="message:${ListMessage}">
-                                        <td class="dtr-control sorting_1" tabindex="0" th:text="${message.getName()}">Airi</td>
-                                        <td th:text="${message.getSex()}" >Satou</td>
-                                        <td th:text="${message.getEthnic()}">Tokyo</td>
-                                        <td th:text="${message.getBirth()}">33</td>
-                                        <td th:text="${message.getLocation()}">2008/11/28</td>
-                                        <td th:text="${message.getIDNumber()}">$162,700</td>
-
-                                    </tr>
-                                    </tbody>
                                 </table>
                                 </div>
 							</div>
@@ -172,11 +155,13 @@
 		</div>    
 	</div>
     <!-- Script Start -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="static/js/jquery.min.js"></script>
     <script src="static/js/popper.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/custom.js"></script>
     <script src = "static/js/Upload.js"></script>
+    <script src="static/js/piechartjs.js"></script>
 </body>
 </html>
 <script>
@@ -185,7 +170,7 @@
         const formData = new FormData();
         formData.append('file', file);
 
-        fetch('upload', {
+        fetch('animal_identification', {
             method: 'POST',
             body: formData
         })
@@ -196,17 +181,65 @@
                 return response.json();
             })
             .then(data => {
+               var img = document.getElementById('img_path');
                 // 处理服务器响应
-                if(data.name===null&&data.birth===0&&data.sex===null&&data.ethnic===null&&data.location===null&&data.idnumber===null){
-                    document.getElementById('mess').innerText = '识别错误或者没有上传文件';
-                }else{
-                    document.getElementById('name').innerText=data.name;
-                    document.getElementById('sex').innerText = data.sex;
-                    document.getElementById('ethnic').innerText = data.ethnic;
-                    document.getElementById('born').innerText = data.birth;
-                    document.getElementById('location').innerText=data.location;
-                    document.getElementById('idNumber').innerText = data.idnumber;
+                google.load("visualization", "1", {packages:["corechart"]});
+                google.setOnLoadCallback(drawCharts);
+                function drawCharts() {
+                    var dataarray = [];
+                    dataarray.push(['Country', 'Page Hits']);
+                    dataarray = dataarray.concat(data.map(function (obj){
+                        return [obj.name,obj.score];
+                    }))
+
+                    // pie chart data
+                    var pieData = google.visualization.arrayToDataTable(dataarray);
+                    // pie chart options
+                    var pieOptions = {
+                        backgroundColor: 'transparent',
+                        pieHole: 0.4,
+                        colors: [ "cornflowerblue",
+                            "olivedrab",
+                            "orange",
+                            "tomato",
+                            "crimson",
+                            "purple",
+                            "turquoise",
+                            "forestgreen",
+                            "navy",
+                            "gray"],
+                        pieSliceText: 'value',
+                        tooltip: {
+                            text: 'percentage'
+                        },
+                        fontName: 'Open Sans',
+                        chartArea: {
+                            width: '100%',
+                            height: '94%'
+                        },
+                        legend: {
+                            textStyle: {
+                                fontSize: 13
+                            }
+                        }
+                    };
+                    // draw pie chart
+                    var pieChart = new google.visualization.PieChart(document.getElementById('pie-chart'));
+                    pieChart.draw(pieData, pieOptions);
                 }
+                var filename = data[0].path;
+                var encodedFilename = encodeURIComponent(filename);
+                var imgUrl = 'static/uploadFile/' + encodedFilename;
+                console.log(imgUrl);
+                console.log(decodeURIComponent(imgUrl));
+                img.src = imgUrl;
+                img.width = 400;
+                img.height = 300;
+                var index = 0;
+                for (var i = 1;i<data.length;i++){
+                    if(data[index].score<data[i].score)index = i;
+                }
+                document.getElementById('imgname').innerText = data[index].name;
             })
             .catch(error => {
                 // 处理错误
