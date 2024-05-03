@@ -2,6 +2,7 @@ package com.example.Controller;
 
 import com.example.Server.IdMessageServer;
 import com.example.Util.AirOcr;
+import com.example.entity.IdMessage;
 import jakarta.annotation.Resource;
 import org.json.JSONObject;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,18 +37,32 @@ public class IDReadController {
     }
     @ResponseBody
     @PostMapping("/upload")
-    public String  Upload(@RequestParam("file") MultipartFile file){
-        if(file.isEmpty()){
-            return "上传失败,请选择文件";
-        }
+    public IdMessage Upload(@RequestParam("file") MultipartFile file){
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
         String fileName = file.getOriginalFilename();
         String filePath = "C:\\Users\\ATRI\\IdeaProjects\\AIspringSSM\\src\\main\\resources\\uploadFile\\";
         File dir = new File(filePath+fileName);
        try{
+          IdMessage message;
            file.transferTo(dir);
-           return "文件上传成功";
+           JSONObject jsonObject = airOcr.OCRIdCard(dir.getAbsolutePath());
+            if(jsonObject.get("image_status").toString().equals("other_type_card")){
+                return new IdMessage();
+            }
+         message = idMessageServer.InsertMessage(
+                 ((JSONObject)((JSONObject)jsonObject.get("words_result")).get("姓名")).get("words").toString(),
+                 ((JSONObject)((JSONObject)jsonObject.get("words_result")).get("性别")).get("words").toString(),
+                 ((JSONObject)((JSONObject)jsonObject.get("words_result")).get("民族")).get("words").toString(),
+                 Integer.parseInt(((JSONObject)((JSONObject)jsonObject.get("words_result")).get("出生")).get("words").toString()),
+                 ((JSONObject)((JSONObject)jsonObject.get("words_result")).get("住址")).get("words").toString(),
+                 ((JSONObject)((JSONObject)jsonObject.get("words_result")).get("公民身份号码")).get("words").toString(),
+                    user.getUsername());
+           return message;
        } catch (IOException e) {
-           return "文件上传失败";
+           return new IdMessage();
        }
     }
 }

@@ -107,7 +107,7 @@
                                 </div>
                                 <hr>
                                 <div class="wrapper">
-                                    <header>File Uploader JavaScript</header>
+                                    <header>点击上传图片</header>
                                     <form action="#">
                                         <input id="fileInput" class="file-input" type="file" name="file" hidden>
                                         <i class="fas fa-cloud-upload-alt"></i>
@@ -116,7 +116,7 @@
                                     <section class="progress-area"></section>
                                     <section class="uploaded-area"></section>
                                 </div>
-                                <span id="mess"></span>
+                                <span style="color: #ff001c" id="mess"></span>
                                 <hr>
 								<div class="ad-invoice-title">
 									<h4>识别结果</h4>
@@ -124,18 +124,14 @@
 								<hr>
 								<div class="row">
 									<div class="col-sm-6">
-                                        <p>姓名:<span></span></p>
-										<p>性别:<span></span></p>
-                                        <p>民族:<span></span></p>
-                                        <p>出生:<span></span></p>
-                                        <p>住址:<span></span></p>
-                                        <p>公民身份证号:<span></span></p>
+                                        <p>姓名:<span id="name" ></span></p>
+										<p>性别:<span id="sex" ></span></p>
+                                        <p>民族:<span id="ethnic" ></span></p>
+                                        <p>出生:<span id="born" ></span></p>
+                                        <p>住址:<span id="location" ></span></p>
+                                        <p>公民身份证号:<span id="idNumber"></span></p>
 									</div>
-                                    <div class="col-sm-6">
-                                        <p>签发机关:<span></span></p>
-                                        <p>签发日期:<span></span></p>
-                                        <p>失效日期:<span></span></p>
-                                    </div>
+
 								</div>
                                 <hr>
                                 <div id="example_wrapper" class="dataTables_wrapper no-footer">
@@ -149,14 +145,12 @@
 
                                     <tbody>
                                     <tr class="odd">
-                                        <td class="dtr-control sorting_1" tabindex="0">姓名</td>
-                                        <td>性别</td>
-                                        <td>民族</td>
-                                        <td>出生</td>
-                                        <td>住址</td>
-                                        <td>身份证号</td>
-                                        <td>签发机关</td>
-                                        <td>签发日期</td>
+                                        <td  class="dtr-control sorting_1" tabindex="0">姓名</td>
+                                        <td >性别</td>
+                                        <td >民族</td>
+                                        <td >出生</td>
+                                        <td >住址</td>
+                                        <td >身份证号</td>
                                     </tr>
                                     <tr class="odd" th:each="message:${ListMessage}">
                                         <td class="dtr-control sorting_1" tabindex="0" th:text="${message.getName()}">Airi</td>
@@ -165,8 +159,7 @@
                                         <td th:text="${message.getBirth()}">33</td>
                                         <td th:text="${message.getLocation()}">2008/11/28</td>
                                         <td th:text="${message.getIDNumber()}">$162,700</td>
-                                        <td th:text="${message.getIssuAuthor()}">5407</td>
-                                        <td th:text="${message.getDateOfIssue()}">a.satou@datatables.net</td>
+
                                     </tr>
                                     </tbody>
                                 </table>
@@ -204,7 +197,16 @@
             })
             .then(data => {
                 // 处理服务器响应
-                console.log(data);
+                if(data.name===null&&data.birth===0&&data.sex===null&&data.ethnic===null&&data.location===null&&data.idnumber===null){
+                    document.getElementById('mess').innerText = '识别错误或者没有上传文件';
+                }else{
+                    document.getElementById('name').innerText=data.name;
+                    document.getElementById('sex').innerText = data.sex;
+                    document.getElementById('ethnic').innerText = data.ethnic;
+                    document.getElementById('born').innerText = data.birth;
+                    document.getElementById('location').innerText=data.location;
+                    document.getElementById('idNumber').innerText = data.idnumber;
+                }
             })
             .catch(error => {
                 // 处理错误

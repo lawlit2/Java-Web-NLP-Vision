@@ -10,6 +10,4 @@ public class IdMessage {
     int Birth;
     String location;
     String IDNumber;
-    String IssuAuthor;
-    int DateOfIssue;
 }
