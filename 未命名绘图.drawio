@@ -1,9 +1,33 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="25.0.3">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.4">
   <diagram name="第 1 页" id="-oncTrr2wkOJ9GbbqRtI">
-    <mxGraphModel>
+    <mxGraphModel dx="1201" dy="750" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="WSk45EEilxoPS_JuW9qf-8" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="210" y="120" width="120" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="WSk45EEilxoPS_JuW9qf-1" value="&lt;span class=&quot;VerbatimChar&quot;&gt;&lt;span style=&quot;font-size:11.0pt;&lt;br/&gt;font-family:宋体;mso-bidi-font-family:Consolas;mso-ansi-language:ZH-CN;&lt;br/&gt;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA&quot;&gt;农机数据采集系统&lt;/span&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WSk45EEilxoPS_JuW9qf-8">
+          <mxGeometry width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WSk45EEilxoPS_JuW9qf-2" value="&lt;span class=&quot;VerbatimChar&quot;&gt;&lt;span style=&quot;font-size:11.0pt;&lt;br/&gt;font-family:宋体;mso-bidi-font-family:Consolas;mso-ansi-language:ZH-CN;&lt;br/&gt;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;本软件系统&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="WSk45EEilxoPS_JuW9qf-8">
+          <mxGeometry y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WSk45EEilxoPS_JuW9qf-4" value="&lt;span class=&quot;VerbatimChar&quot;&gt;&lt;span style=&quot;font-size:11.0pt;&lt;br/&gt;font-family:宋体;mso-bidi-font-family:Consolas;mso-ansi-language:ZH-CN;&lt;br/&gt;mso-fareast-language:ZH-CN;mso-bidi-language:AR-SA&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;可视化分析结果&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="WSk45EEilxoPS_JuW9qf-8">
+          <mxGeometry y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WSk45EEilxoPS_JuW9qf-6" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fillColor=#fff2cc;strokeColor=#d6b656;" edge="1" parent="WSk45EEilxoPS_JuW9qf-8" source="WSk45EEilxoPS_JuW9qf-1" target="WSk45EEilxoPS_JuW9qf-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-60" y="140" as="sourcePoint" />
+            <mxPoint x="-10" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WSk45EEilxoPS_JuW9qf-7" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fillColor=#fff2cc;strokeColor=#d6b656;" edge="1" parent="WSk45EEilxoPS_JuW9qf-8" source="WSk45EEilxoPS_JuW9qf-2" target="WSk45EEilxoPS_JuW9qf-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="90" y="200" as="sourcePoint" />
+            <mxPoint x="90" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
